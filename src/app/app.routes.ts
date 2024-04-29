@@ -1,3 +1,6 @@
 import { Routes } from '@angular/router';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {path: 'search-bar', component: SearchBarComponent}
+];

@@ -1,0 +1,10 @@
+<div class="search-bar-container">
+    <input placeholder="Search" [(ngModel)]="searchText" (input)="filterFiles()"> 
+    <button mat-icon-button>
+        <mat-icon>search</mat-icon>
+    </button>
+</div>
+
+<div *ngFor="let file of filteredFiles">
+  {{ file.name }}
+</div>
