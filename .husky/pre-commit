@@ -7,4 +7,4 @@ if ! git diff HEAD^ HEAD --exit-code -- ./package.json; then
 fi
 
 echo "Formatting code with Prettier..."
-npm run format
+npm run lint-staged
