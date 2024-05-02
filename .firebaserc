@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "chmusk-00000": {
+      "hosting": {
+        "chmusk": [
+          "chmusk-00000"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "chmusk-00000"
+  }
+}
