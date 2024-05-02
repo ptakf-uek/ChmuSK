@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
-import { MatIconButton } from '@angular/material/button';
-import { filesList } from '../../data/filesList';
-import { FormsModule, NgForm } from '@angular/forms';
 import { NgFor } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { filesList } from '../../data/filesList';
 
 @Component({
-  selector: 'search-bar',
+  selector: 'app-search-bar',
   standalone: true,
   imports: [MatIcon, MatIconButton, FormsModule, NgFor],
   templateUrl: './search-bar.component.html',

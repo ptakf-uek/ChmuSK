@@ -1,4 +1,4 @@
-export let filesList = [
+export const filesList = [
   { name: 'book1.pdf', id: 1 },
   { name: 'book2.pdf', id: 2 },
   { name: 'document1.docx', id: 3 },
