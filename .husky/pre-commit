@@ -1,2 +1,10 @@
-echo "Formatting code with prettier..."
+echo "Checking dependencies..."
+# Check if dependencies changed
+if ! git diff HEAD^ HEAD --exit-code -- ./package.json; then
+    # If they did, update them
+    echo "Updating dependencies..."
+    npm install
+fi
+
+echo "Formatting code with Prettier..."
 npm run format
