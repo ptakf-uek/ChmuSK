@@ -1,0 +1,5 @@
+<div>
+  <button (click)="takePhoto()">Take Photo</button>
+  <br />
+  <img *ngIf="capturedImage" [src]="capturedImage" alt="Captured Image" />
+</div>

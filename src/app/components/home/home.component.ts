@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { TakePhotoComponent } from '../take-photo/take-photo.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [TakePhotoComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

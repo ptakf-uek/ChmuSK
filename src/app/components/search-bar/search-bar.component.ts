@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { filesList } from '../../data/filesList';
-import { MobileFunctionalitiesService } from '../../services/mobile-functionalities.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -17,9 +16,7 @@ export class SearchBarComponent {
   searchText: string = '';
   filteredFiles: any[];
 
-  constructor(
-    private mobileFunctionalitiesService: MobileFunctionalitiesService,
-  ) {
+  constructor() {
     this.filteredFiles = filesList;
   }
 
@@ -27,19 +24,5 @@ export class SearchBarComponent {
     this.filteredFiles = filesList.filter((file) =>
       file.name.toLowerCase().includes(this.searchText.toLowerCase()),
     );
-  }
-
-  triggerMobileFunctionalities() {
-    this.mobileFunctionalitiesService.vibratePhone(1000);
-
-    this.mobileFunctionalitiesService
-      .getCurrentLocation()
-      .then((coords) => {
-        console.log('Latitude:', coords.latitude);
-        console.log('Longitude:', coords.longitude);
-      })
-      .catch((error) => {
-        console.error('Error getting location:', error);
-      });
   }
 }
