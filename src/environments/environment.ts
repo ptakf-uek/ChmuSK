@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   firebaseConfig: {
-    apiKey: process.env['FIREBASE_API_KEY'],
+    apiKey: 'AIzaSyDMjWSmkmorNf8NMi-2w-nt4i-XPVuh1-M',
     authDomain: 'chmusk-00000.firebaseapp.com',
     projectId: 'chmusk-00000',
     storageBucket: 'chmusk-00000.appspot.com',
