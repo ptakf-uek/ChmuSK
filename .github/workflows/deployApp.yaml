@@ -30,6 +30,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
     strategy:
       matrix:
         node-version: [20.x]
@@ -42,7 +44,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
-      - run: npm run build --if-present -- --base-href /ChmuSK/
+      - run: npm run build --if-present -- --configuration production --base-href /ChmuSK/
       #    - run: npm test
       - name: Copy index.html to 404.html
         run: cp ./dist/chmusk/browser/index.html ./dist/chmusk/browser/404.html
