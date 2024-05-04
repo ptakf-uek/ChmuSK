@@ -2,41 +2,66 @@
   <div class="container">
     <div class="text-center mt-5">
       <div class="sign-in">
-        <form>
+        <form
+          #logInForm="ngForm"
+          id="logInForm"
+          (ngSubmit)="logInWithEmail(logInForm)"
+        >
           <img class="img-fluid" src="ChmuSK_text_logo_BG.png" alt="Logo" />
           <h1 class="h3 mb-3 fw-normal">Sign in</h1>
 
           <div class="form-floating">
             <input
-              type="email"
+              #emailAddress="ngModel"
+              [(ngModel)]="user.email"
+              name="email"
+              id="email"
+              type="text"
               class="form-control"
-              id="floatingInput"
-              placeholder="name@example.com"
+              pattern="\w+@\w+\.\w+"
+              required
             />
             <label for="floatingInput">Email</label>
           </div>
           <div class="form-floating">
             <input
+              #password="ngModel"
+              [(ngModel)]="user.password"
+              name="password"
+              id="password"
               type="password"
               class="form-control"
-              id="floatingPassword"
-              placeholder="Password"
+              pattern=""
+              required
             />
             <label for="floatingPassword">Password</label>
           </div>
 
-          <button class="w-100 btn btn-lg btn-primary" type="submit">
+          <button
+            class="w-100 btn btn-lg btn-primary"
+            type="submit"
+            [disabled]="logInForm.invalid"
+          >
             Sign in
           </button>
         </form>
       </div>
 
-      <p class="mt-3">Don't have an account? Sign Up <a href="#">here</a></p>
+      <div>
+        <h2>Google</h2>
+        <button class="btn btn-primary" (click)="logInWithGoogle()">
+          Log in with Google
+        </button>
+      </div>
+
+      <p class="mt-3">
+        Don't have an account? Sign Up <a href="/signup">here</a>
+      </p>
     </div>
   </div>
 </main>
 
-<form #logInForm="ngForm" id="logInForm" (ngSubmit)="logInWithEmail(logInForm)">
+<!-- <form #logInForm="ngForm" id="logInForm" (ngSubmit)="logInWithEmail(logInForm)">
   <label for="email" class="form-label">E-Mail</label>
   <input
     #emailAddress="ngModel"
@@ -62,9 +87,4 @@
   />
 
   <button class="btn btn-primary" [disabled]="logInForm.invalid">Log in</button>
-</form>
-
-<h2>Google</h2>
-<button class="btn btn-primary" (click)="logInWithGoogle()">
-  Log in with Google
-</button>
+</form> -->
