@@ -60,8 +60,8 @@ export class AuthService {
 
   signUpWithEmail(email: string, password: string) {
     createUserWithEmailAndPassword(this.auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
+      .then((result) => {
+        const user = result.user;
 
         this.router.navigate(['/']);
       })
@@ -73,8 +73,8 @@ export class AuthService {
 
   logInWithEmail(email: string, password: string) {
     signInWithEmailAndPassword(this.auth, email, password)
-      .then((userCredential: any) => {
-        const user = userCredential.user;
+      .then((result: any) => {
+        const user = result.user;
 
         this.router.navigate(['/']);
       })
