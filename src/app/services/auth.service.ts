@@ -63,7 +63,7 @@ export class AuthService {
       .then((result) => {
         const user = result.user;
 
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -76,7 +76,7 @@ export class AuthService {
       .then((result: any) => {
         const user = result.user;
 
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       })
       .catch((error) => {
         const errorCode = error.code;
