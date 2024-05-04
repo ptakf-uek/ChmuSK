@@ -1,0 +1,33 @@
+<form
+  #signUpForm="ngForm"
+  id="signUpForm"
+  (ngSubmit)="signUpWithEmail(signUpForm)"
+>
+  <label for="email" class="form-label">E-Mail</label>
+  <input
+    #emailAddress="ngModel"
+    [(ngModel)]="user.email"
+    name="email"
+    id="email"
+    type="text"
+    class="form-control"
+    pattern="\w+@\w+\.\w+"
+    required
+  />
+
+  <label for="email" class="form-label">Password</label>
+  <input
+    #password="ngModel"
+    [(ngModel)]="user.password"
+    name="password"
+    id="password"
+    type="password"
+    class="form-control"
+    pattern=""
+    required
+  />
+
+  <button class="btn btn-primary" [disabled]="signUpForm.invalid">
+    Sign in
+  </button>
+</form>

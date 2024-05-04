@@ -1,0 +1,32 @@
+<form #logInForm="ngForm" id="logInForm" (ngSubmit)="logInWithEmail(logInForm)">
+  <label for="email" class="form-label">E-Mail</label>
+  <input
+    #emailAddress="ngModel"
+    [(ngModel)]="user.email"
+    name="email"
+    id="email"
+    type="text"
+    class="form-control"
+    pattern="\w+@\w+\.\w+"
+    required
+  />
+
+  <label for="email" class="form-label">Password</label>
+  <input
+    #password="ngModel"
+    [(ngModel)]="user.password"
+    name="password"
+    id="password"
+    type="password"
+    class="form-control"
+    pattern=""
+    required
+  />
+
+  <button class="btn btn-primary" [disabled]="logInForm.invalid">Log in</button>
+</form>
+
+<h2>Google</h2>
+<button class="btn btn-primary" (click)="logInWithGoogle()">
+  Log in with Google
+</button>
