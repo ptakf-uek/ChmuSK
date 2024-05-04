@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { filesList } from '../../data/filesList';
-import { MobileFunctionalitiesService } from '../../service/mobile-functionalities.service';
+import { MobileFunctionalitiesService } from '../../services/mobile-functionalities.service';
 
 @Component({
   selector: 'app-search-bar',
