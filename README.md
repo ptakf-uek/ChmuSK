@@ -11,6 +11,8 @@
 
 ChmuSK is a cloud storage service for consumers. ChmuSK allows its users to privately store files, such as pictures, videos and documents, and access them from any computer connected to the Internet.
 
+You can try it at: http://ptakf-uek.github.io/ChmuSK
+
 Project developed by Maciej Jastrzębski, Filip Ptak and Krystian Taf.
 
 ***
