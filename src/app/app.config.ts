@@ -10,7 +10,6 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -22,7 +21,17 @@ export const appConfig: ApplicationConfig = {
       registrationStrategy: 'registerWhenStable:30000',
     }),
     importProvidersFrom(
-      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+      provideFirebaseApp(() =>
+        initializeApp({
+          apiKey: 'AIzaSyDMjWSmkmorNf8NMi-2w-nt4i-XPVuh1-M',
+          authDomain: 'chmusk-00000.firebaseapp.com',
+          projectId: 'chmusk-00000',
+          storageBucket: 'chmusk-00000.appspot.com',
+          messagingSenderId: '702253145631',
+          appId: '1:702253145631:web:24a39b0a75f2742d423f2a',
+          measurementId: 'G-QRTZ7Z5HW9',
+        }),
+      ),
     ),
     importProvidersFrom(provideAuth(() => getAuth())),
     importProvidersFrom(provideFirestore(() => getFirestore())),
