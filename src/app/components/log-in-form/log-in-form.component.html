@@ -1,105 +1,67 @@
 <main class="form-signin">
-  <div class="container">
-    <div
-      class="row justify-content-center align-items-center"
-      style="height: 25vh"
-    >
-      <div class="col-5">
-        <img
-          src=".\assets\icons\icon-192x192.png"
-          class="img-fluid"
-          alt="ChmuSK Logo"
-        />
-      </div>
-      <div class="col-7">
-        <p class="text-start" style="font-size: 2em">ChmuSK</p>
-        <p class="text-start" style="font-size: 1.5em">JUST ADD IT!</p>
-      </div>
+  <div class="d-flex justify-content-center align-items-center gap-4">
+    <div>
+      <img src=".\assets\icons\icon-128x128.png" alt="Logo" />
     </div>
-    <div class="text-center mt-5">
-      <div class="sign-in">
-        <form
-          #logInForm="ngForm"
-          id="logInForm"
-          (ngSubmit)="logInWithEmail(logInForm)"
-        >
-          <h1 class="h3 mb-3 fw-normal">Sign in</h1>
-
-          <div class="form-floating">
-            <input
-              #emailAddress="ngModel"
-              [(ngModel)]="user.email"
-              name="email"
-              id="email"
-              type="text"
-              class="form-control"
-              pattern="\w+@\w+\.\w+"
-              required
-            />
-            <label for="floatingInput">Email</label>
-          </div>
-          <div class="form-floating">
-            <input
-              #password="ngModel"
-              [(ngModel)]="user.password"
-              name="password"
-              id="password"
-              type="password"
-              class="form-control"
-              pattern=""
-              required
-            />
-            <label for="floatingPassword">Password</label>
-          </div>
-
-          <button
-            class="w-100 btn btn-lg btn-primary"
-            type="submit"
-            [disabled]="logInForm.invalid"
-          >
-            Sign in
-          </button>
-        </form>
-      </div>
-
-      <div>
-        <h2>Google</h2>
-        <button class="btn btn-primary" (click)="logInWithGoogle()">
-          Log in with Google
-        </button>
-      </div>
-
-      <p class="mt-3">
-        Don't have an account? Sign Up <a href="/signup">here</a>
-      </p>
+    <div class="text-start">
+      <p style="font-size: 3em">ChmuSK</p>
+      <p style="font-size: 1.5em">JUST ADD IT!</p>
     </div>
   </div>
+
+  <div class="text-center mt-5">
+    <div class="sign-in">
+      <form
+        #logInForm="ngForm"
+        id="logInForm"
+        (ngSubmit)="logInWithEmail(logInForm)"
+      >
+        <h1 class="h3 mb-3 fw-normal">Log in</h1>
+
+        <div class="form-floating">
+          <input
+            #emailAddress="ngModel"
+            [(ngModel)]="user.email"
+            name="email"
+            id="email"
+            type="text"
+            class="form-control"
+            pattern="\w+@\w+\.\w+"
+            required
+          />
+          <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating">
+          <input
+            #password="ngModel"
+            [(ngModel)]="user.password"
+            name="password"
+            id="password"
+            type="password"
+            class="form-control"
+            required
+          />
+          <label for="floatingPassword">Password</label>
+        </div>
+
+        <button
+          class="w-100 btn btn-lg btn-primary"
+          [disabled]="logInForm.invalid"
+        >
+          Log in
+        </button>
+      </form>
+    </div>
+
+    <div>
+      <h2 class="my-2">or</h2>
+      <button class="w-100 btn btn-lg btn-primary" (click)="logInWithGoogle()">
+        Log in with Google
+      </button>
+    </div>
+
+    <p class="mt-3">
+      Don't have an account? Sign Up <a routerLink="/signup">here</a>
+    </p>
+  </div>
 </main>
-
-<!-- <form #logInForm="ngForm" id="logInForm" (ngSubmit)="logInWithEmail(logInForm)">
-  <label for="email" class="form-label">E-Mail</label>
-  <input
-    #emailAddress="ngModel"
-    [(ngModel)]="user.email"
-    name="email"
-    id="email"
-    type="text"
-    class="form-control"
-    pattern="\w+@\w+\.\w+"
-    required
-  />
-
-  <label for="email" class="form-label">Password</label>
-  <input
-    #password="ngModel"
-    [(ngModel)]="user.password"
-    name="password"
-    id="password"
-    type="password"
-    class="form-control"
-    pattern=""
-    required
-  />
-
-  <button class="btn btn-primary" [disabled]="logInForm.invalid">Log in</button>
-</form> -->
