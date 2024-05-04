@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ChmuSK": {
+    "chmusk": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/chmu-sk",
+            "outputPath": "dist/chmusk",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ChmuSK:build:production"
+              "buildTarget": "chmusk:build:production"
             },
             "development": {
-              "buildTarget": "ChmuSK:build:development"
+              "buildTarget": "chmusk:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ChmuSK:build"
+            "buildTarget": "chmusk:build"
           }
         },
         "test": {
@@ -100,6 +100,23 @@
           "options": {
             "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "chmusk:build:production",
+              "serveTarget": "chmusk:serve:production"
+            },
+            "development": {
+              "buildTarget": "chmusk:build:development",
+              "serveTarget": "chmusk:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
