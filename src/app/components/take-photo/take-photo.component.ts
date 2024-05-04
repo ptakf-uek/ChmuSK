@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class TakePhotoComponent {
   capturedImage: any;
+  currentFacingMode: 'user' | 'environment' = 'user'; // Default to front camera
 
   constructor(
     private mobileFunctionalitiesService: MobileFunctionalitiesService,
@@ -18,12 +19,17 @@ export class TakePhotoComponent {
 
   takePhoto() {
     this.mobileFunctionalitiesService
-      .takeFrontCameraPhoto()
+      .takeCameraPhoto(this.currentFacingMode)
       .then((blob) => {
         this.capturedImage = URL.createObjectURL(blob);
       })
       .catch((error) => {
         console.error('Error capturing image:', error);
       });
+  }
+
+  toggleCamera() {
+    this.currentFacingMode =
+      this.currentFacingMode === 'user' ? 'environment' : 'user';
   }
 }

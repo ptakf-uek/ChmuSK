@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.image-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}

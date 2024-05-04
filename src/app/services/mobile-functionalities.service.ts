@@ -34,14 +34,14 @@ export class MobileFunctionalitiesService {
   }
 
   // Function to take a photo with the front camera
-  takeFrontCameraPhoto(): Promise<Blob> {
+  takeCameraPhoto(facingMode: 'user' | 'environment'): Promise<Blob> {
     return new Promise((resolve, reject) => {
       if (
         'mediaDevices' in navigator &&
         'getUserMedia' in navigator.mediaDevices
       ) {
         navigator.mediaDevices
-          .getUserMedia({ video: { facingMode: 'user' } })
+          .getUserMedia({ video: { facingMode: facingMode } })
           .then((stream) => {
             const video = document.createElement('video');
             video.srcObject = stream;

@@ -1,5 +1,8 @@
-<div>
+<div class="container">
+  <button (click)="toggleCamera()">Toggle Camera</button>
   <button (click)="takePhoto()">Take Photo</button>
   <br />
-  <img *ngIf="capturedImage" [src]="capturedImage" alt="Captured Image" />
+  <div class="image-container">
+    <img *ngIf="capturedImage" [src]="capturedImage" alt="Captured Image" />
+  </div>
 </div>
