@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+import { ApplicationConfig, isDevMode } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideServiceWorker } from '@angular/service-worker';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes), provideAnimationsAsync(), provideServiceWorker('ngsw-worker.js', {
+        enabled: !isDevMode(),
+        registrationStrategy: 'registerWhenStable:30000'
+    })],
+=======
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -37,4 +51,5 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideFirestore(() => getFirestore())),
     importProvidersFrom(provideStorage(() => getStorage())),
   ],
+>>>>>>> b92eee10bf01da6cc66fd7f3546a62e54aed6f44
 };
