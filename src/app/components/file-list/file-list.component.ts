@@ -39,8 +39,8 @@ export class FileListComponent implements OnInit {
 
   getFileList() {
     // Get a list of files from the userFiles collection in the database
-    this.databaseService.getFileList().then((data) => {
-      this.fileList = data;
+    this.databaseService.getFileList().then((fileList) => {
+      this.fileList = fileList;
       this.filteredFiles = this.fileList;
     });
   }
@@ -56,10 +56,10 @@ export class FileListComponent implements OnInit {
     // Delete reference to file from database
     this.databaseService.deleteFile(fileData).then(() => {
       this.getFileList();
-    });
 
-    // Delete file from storage
-    this.storageService.deleteFile(fileData);
+      // Delete file from storage
+      this.storageService.deleteFile(fileData);
+    });
 
     // Vibrate device
     this.mobileFunctionalitiesService.vibratePhone(200);

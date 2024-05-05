@@ -31,28 +31,33 @@
       />
     </button>
     <mat-menu #beforeMenu="matMenu" xPosition="before">
-      <button mat-menu-item>
-        <span
-          (click)="addFolderFromInput()"
-          (keydown.enter)="addFolderFromInput()"
-          tabindex="0"
-        >
-          Create folder
-        </span>
+      <button
+        mat-menu-item
+        (click)="addFolderFromInput()"
+        (keydown.enter)="addFolderFromInput()"
+      >
+        <span tabindex="0"> Create folder </span>
       </button>
-      <button mat-menu-item>
-        <span
-          (click)="addFileFromInput()"
-          (keydown.enter)="addFileFromInput()"
-          tabindex="0"
-        >
-          Add file
-        </span>
+      <button
+        mat-menu-item
+        (click)="fileUpload.click()"
+        (keydown.enter)="fileUpload.click()"
+      >
+        <span tabindex="0"> Add file </span>
+        <input
+          type="file"
+          class="file-input"
+          #fileUpload
+          (change)="addFileFromInput($event)"
+        />
       </button>
-      <button mat-menu-item>
-        <span (click)="takePhoto()" (keydown.enter)="takePhoto()" tabindex="0">
-          Take photo
-        </span>
+      <button
+        mat-menu-item
+        (click)="takePhoto()"
+        (keydown.enter)="takePhoto()"
+        tabindex="0"
+      >
+        <span> Take photo </span>
       </button>
     </mat-menu>
   </div>
@@ -60,4 +65,7 @@
 
 <div class="space-medium"></div>
 
-<app-file-list></app-file-list>
+<ng-container #outlet [ngTemplateOutlet]="content"></ng-container>
+<ng-template #content>
+  <app-file-list></app-file-list>
+</ng-template>

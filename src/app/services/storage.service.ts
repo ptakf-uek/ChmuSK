@@ -5,6 +5,7 @@ import {
   getDownloadURL,
   getMetadata,
   ref,
+  uploadBytes,
 } from '@angular/fire/storage';
 
 @Injectable({
@@ -19,8 +20,10 @@ export class StorageService {
     deleteObject(ref(this.storage, fileStorageId));
   }
 
-  addFile(file: any) {
-    // Add file to storage
+  async addFile(blob: any, file: any) {
+    // Get file size metadata from storage
+    const fileStorageId = `${file['id']}.${file['filename'].split('.')[1]}`;
+    uploadBytes(ref(this.storage, fileStorageId), blob);
   }
 
   async getFileSize(file: any) {
