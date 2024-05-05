@@ -33,11 +33,6 @@ export class HomeComponent implements OnInit {
   capturedImage: any;
   currentFacingMode: 'user' | 'environment' = 'user'; // Default to front camera
 
-  fileList: any[] = [
-    { filename: 'book1.pdf', id: 1, lastModified: '24-13-2033', size: 43243 },
-    { filename: 'book2.pdf', id: 2, lastModified: '01-01-2045', size: 123 },
-  ];
-
   constructor(
     private router: Router,
     private authService: AuthService,

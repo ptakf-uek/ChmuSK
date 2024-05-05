@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-file-element',
@@ -9,7 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
   templateUrl: './file-element.component.html',
   styleUrl: './file-element.component.scss',
 })
-export class FileElementComponent {
+export class FileElementComponent implements OnInit {
   @Input()
   fileData: any = {};
 
@@ -18,11 +19,39 @@ export class FileElementComponent {
   @Output()
   deleteFileEvent = new EventEmitter<any>();
 
+  fileSize: number = 0;
+  lastModifiedDate: string = '';
+
+  constructor(private storageService: StorageService) {}
+
+  ngOnInit(): void {
+    this.getFileSize();
+    this.getFileLastModifiedDate();
+  }
+
   changeFilename(): void {
     this.changeFilenameEvent.emit(this.fileData);
   }
 
   deleteFile(): void {
     this.deleteFileEvent.emit(this.fileData);
+  }
+
+  getFileSize() {
+    // Get file size from storage
+    this.storageService.getFileSize(this.fileData).then((fileSize) => {
+      this.fileSize = fileSize;
+      this.fileData.size = fileSize;
+    });
+  }
+
+  getFileLastModifiedDate() {
+    // Get file size from storage
+    this.storageService
+      .getFileLastModifiedDate(this.fileData)
+      .then((lastModifiedDate) => {
+        this.lastModifiedDate = lastModifiedDate;
+        this.fileData.lastModified = lastModifiedDate;
+      });
   }
 }

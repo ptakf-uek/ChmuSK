@@ -9,12 +9,12 @@
           <p style="font-size: large">
             <strong>{{ fileData.filename }}</strong>
             <span>
-              &lbbrk;{{ (fileData.size / 1024).toFixed(2) }} KB&rbbrk;</span
+              &lbbrk;{{ (this.fileSize / 1024).toFixed(2) }} KB&rbbrk;</span
             >
           </p>
         </div>
         <div class="col-12">
-          <p>Last modified: {{ fileData.lastModified }}</p>
+          <p>Last modified: {{ this.lastModifiedDate }}</p>
         </div>
       </div>
     </a>
