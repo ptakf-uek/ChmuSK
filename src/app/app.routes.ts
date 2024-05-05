@@ -5,6 +5,8 @@ import { LogInFormComponent } from './components/log-in-form/log-in-form.compone
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
 import { TakePhotoComponent } from './components/take-photo/take-photo.component';
+import { FileElementComponent } from './components/file-element/file-element.component';
+import { FolderElementComponent } from './components/folder-element/folder-element.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -13,4 +15,6 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'search-bar', component: SearchBarComponent },
   { path: 'take-photo', component: TakePhotoComponent },
+  { path: 'file-element', component: FileElementComponent },
+  { path: 'folder-element', component: FolderElementComponent },
 ];

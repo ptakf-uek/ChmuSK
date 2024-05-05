@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-2 text-center">
+    <img
+      class="img-fluid"
+      src=".\assets\icons\folder_icon.png"
+      alt="folder_icon"
+    />
+  </div>
+  <div class="col-8">
+    <div class="row folder-name">
+      <div class="col-12">
+        <strong class="fs-5">Desktop</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p>12.04.2024</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-2 text-center">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="beforeMenu"
+      aria-label="Example icon-button with a menu"
+    >
+      <img
+        class="img-fluid three-dots-icon"
+        src=".\assets\icons\three_dots_icon.png"
+        alt="edit_icon"
+      />
+    </button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item>
+        <span
+          (click)="changeName()"
+          (keydown.enter)="changeName()"
+          tabindex="0"
+        >
+          Change name
+        </span>
+      </button>
+      <button mat-menu-item>
+        <span
+          (click)="deleteThing()"
+          (keydown.enter)="deleteThing()"
+          tabindex="0"
+        >
+          Delete
+        </span>
+      </button>
+    </mat-menu>
+  </div>
+</div>

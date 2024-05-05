@@ -8,7 +8,8 @@ import {
 
 import { MatButtonModule } from '@angular/material/button';
 import { CreationSheetComponent } from '../creation-sheet/creation-sheet.component';
-import { MatMenuModule } from '@angular/material/menu';
+import { FileElementComponent } from '../file-element/file-element.component';
+import { FolderElementComponent } from '../folder-element/folder-element.component';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +17,10 @@ import { MatMenuModule } from '@angular/material/menu';
   imports: [
     TakePhotoComponent,
     SearchBarComponent,
+    FileElementComponent,
+    FolderElementComponent,
     MatButtonModule,
     MatBottomSheetModule,
-    MatMenuModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -28,13 +30,5 @@ export class HomeComponent {
 
   openCreationSheet(): void {
     this._bottomSheet.open(CreationSheetComponent);
-  }
-
-  changeName(): void {
-    console.log('Name changed!');
-  }
-
-  deleteThing(): void {
-    console.log('Thing deleted!');
   }
 }
