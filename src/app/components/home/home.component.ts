@@ -8,6 +8,7 @@ import {
 
 import { MatButtonModule } from '@angular/material/button';
 import { CreationSheetComponent } from '../creation-sheet/creation-sheet.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ import { CreationSheetComponent } from '../creation-sheet/creation-sheet.compone
     SearchBarComponent,
     MatButtonModule,
     MatBottomSheetModule,
+    MatMenuModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -26,5 +28,13 @@ export class HomeComponent {
 
   openCreationSheet(): void {
     this._bottomSheet.open(CreationSheetComponent);
+  }
+
+  changeName(): void {
+    console.log('Name changed!');
+  }
+
+  deleteThing(): void {
+    console.log('Thing deleted!');
   }
 }

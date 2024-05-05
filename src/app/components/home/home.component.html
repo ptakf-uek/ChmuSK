@@ -1,4 +1,6 @@
-<div class="text-center mt-5">
+<div class="container">
+  <div class="space-small"></div>
+  <!-- LOGO ------------------------------------------------------------------------------- -->
   <div class="d-flex justify-content-center align-items-center gap-4">
     <div>
       <img src=".\assets\icons\icon-128x128.png" alt="Logo" />
@@ -9,14 +11,144 @@
     </div>
   </div>
 
-  <h2>My ChmuSK</h2>
+  <div class="space-small"></div>
 
-  <img
-    src=".\assets\icons\plus_icon.png"
-    alt="plus-icon"
-    style="width: 20px; height: 20px"
-    (click)="openCreationSheet()"
-  />
+  <!-- Folder name and plus button ------------------------------------------------------------------------------- -->
+  <div class="row align-items-center justify-content-end">
+    <div class="col-2"></div>
+    <div class="col-8 text-center">
+      <h1 class="display-6 text-shrink">
+        <strong id="folder-name">My ChmuSK</strong>
+      </h1>
+    </div>
+    <div class="col-2 text-center">
+      <img
+        class="img-fluid"
+        src=".\assets\icons\plus_icon.png"
+        alt="Plus Icon"
+        (click)="openCreationSheet()"
+        (keydown.enter)="openCreationSheet()"
+        (keydown.space)="openCreationSheet()"
+        tabindex="0"
+      />
+    </div>
+  </div>
+
+  <div class="space-medium"></div>
+
+  <!-- Folder  ------------------------------------------------------------------------------- -->
+  <div class="row">
+    <div class="col-2 text-center">
+      <img
+        class="img-fluid"
+        src=".\assets\icons\folder_icon.png"
+        alt="folder_icon"
+      />
+    </div>
+    <div class="col-8">
+      <div class="row folder-name">
+        <div class="col-12">
+          <strong class="fs-5">Desktop</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p>12.04.2024</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-2 text-center">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="beforeMenu"
+        aria-label="Example icon-button with a menu"
+      >
+        <img
+          class="img-fluid three-dots-icon"
+          src=".\assets\icons\three_dots_icon.png"
+          alt="edit_icon"
+        />
+      </button>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item>
+          <span
+            (click)="changeName()"
+            (keydown.enter)="changeName()"
+            tabindex="0"
+          >
+            Change name
+          </span>
+        </button>
+        <button mat-menu-item>
+          <span
+            (click)="deleteThing()"
+            (keydown.enter)="deleteThing()"
+            tabindex="0"
+          >
+            Delete
+          </span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <div class="space-small"></div>
+
+  <!-- File ------------------------------------------------------------------------------- -->
+  <div class="row">
+    <div class="col-2 text-center">
+      <img
+        class="img-fluid"
+        src=".\assets\icons\file_icon.png"
+        alt="file_icon"
+      />
+    </div>
+    <div class="col-8">
+      <div class="row file-name">
+        <div class="col-12">
+          <strong style="font-size: large">Praca Dyplomowa</strong>
+        </div>
+        <div class="col-12">
+          <p>Yesterday</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-2 text-center">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="beforeMenu"
+        aria-label="Example icon-button with a menu"
+      >
+        <img
+          class="img-fluid three-dots-icon"
+          src=".\assets\icons\three_dots_icon.png"
+          alt="edit_icon"
+        />
+      </button>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item>
+          <span
+            (click)="changeName()"
+            (keydown.enter)="changeName()"
+            tabindex="0"
+          >
+            Change name
+          </span>
+        </button>
+        <button mat-menu-item>
+          <span
+            (click)="deleteThing()"
+            (keydown.enter)="deleteThing()"
+            tabindex="0"
+          >
+            Delete
+          </span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <div class="space-small"></div>
 </div>
 
 <!-- Temp -->

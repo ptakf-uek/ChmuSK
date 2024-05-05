@@ -14,7 +14,14 @@ export class CreationSheetComponent {
     private _bottomSheetRef: MatBottomSheetRef<CreationSheetComponent>,
   ) {}
 
-  openLink(event: MouseEvent): void {
+  createNewFolder(event: MouseEvent): void {
+    console.log('Folder created!');
+    this._bottomSheetRef.dismiss();
+    event.preventDefault();
+  }
+
+  addNewFile(event: MouseEvent): void {
+    console.log('File added!');
     this._bottomSheetRef.dismiss();
     event.preventDefault();
   }
