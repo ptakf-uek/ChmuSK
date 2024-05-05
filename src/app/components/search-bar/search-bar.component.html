@@ -1,4 +1,4 @@
-<div class="search-bar-container">
+<div class="search-bar-container mb-4">
   <button mat-icon-button>
     <mat-icon>search</mat-icon>
   </button>
@@ -10,5 +10,8 @@
 </div>
 
 <div *ngFor="let file of filteredFiles">
-  {{ file.name }}
+  <app-file-element
+    [fileData]="file"
+    (changeFilenameEvent)="changeFilename($event)"
+  ></app-file-element>
 </div>

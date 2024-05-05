@@ -1,16 +1,23 @@
-<div class="row">
+<div class="row mb-3">
   <div class="col-2 text-center">
     <img class="img-fluid" src=".\assets\icons\file_icon.png" alt="file_icon" />
   </div>
   <div class="col-8">
-    <div class="row file-name">
-      <div class="col-12">
-        <strong style="font-size: large">Praca Dyplomowa</strong>
+    <a>
+      <div class="row file-name">
+        <div class="col-12">
+          <p style="font-size: large">
+            <strong>{{ fileData.filename }}</strong>
+            <span>
+              &lbbrk;{{ (fileData.size / 1024).toFixed(2) }} KB&rbbrk;</span
+            >
+          </p>
+        </div>
+        <div class="col-12">
+          <p>Last modified: {{ fileData.lastModified }}</p>
+        </div>
       </div>
-      <div class="col-12">
-        <p>Yesterday</p>
-      </div>
-    </div>
+    </a>
   </div>
   <div class="col-2 text-center">
     <button
@@ -27,8 +34,8 @@
     <mat-menu #beforeMenu="matMenu" xPosition="before">
       <button mat-menu-item>
         <span
-          (click)="changeName()"
-          (keydown.enter)="changeName()"
+          (click)="changeFilename()"
+          (keydown.enter)="changeFilename()"
           tabindex="0"
         >
           Change name
@@ -36,8 +43,8 @@
       </button>
       <button mat-menu-item>
         <span
-          (click)="deleteThing()"
-          (keydown.enter)="deleteThing()"
+          (click)="deleteFile()"
+          (keydown.enter)="deleteFile()"
           tabindex="0"
         >
           Delete

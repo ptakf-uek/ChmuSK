@@ -1,5 +1,4 @@
 <div class="space-small"></div>
-<!-- LOGO ------------------------------------------------------------------------------- -->
 <div class="d-flex justify-content-center align-items-center gap-4">
   <div>
     <img src=".\assets\icons\icon-128x128.png" alt="Logo" />
@@ -12,7 +11,6 @@
 
 <div class="space-small"></div>
 
-<!-- Folder name and plus button ------------------------------------------------------------------------------- -->
 <div class="row align-items-center justify-content-end">
   <div class="col-2"></div>
   <div class="col-8 text-center">
@@ -35,8 +33,8 @@
     <mat-menu #beforeMenu="matMenu" xPosition="before">
       <button mat-menu-item>
         <span
-          (click)="addFolderInput()"
-          (keydown.enter)="addFolderInput()"
+          (click)="addFolderFromInput()"
+          (keydown.enter)="addFolderFromInput()"
           tabindex="0"
         >
           Create folder
@@ -44,11 +42,16 @@
       </button>
       <button mat-menu-item>
         <span
-          (click)="addFileInput()"
-          (keydown.enter)="addFileInput()"
+          (click)="addFileFromInput()"
+          (keydown.enter)="addFileFromInput()"
           tabindex="0"
         >
           Add file
+        </span>
+      </button>
+      <button mat-menu-item>
+        <span (click)="takePhoto()" (keydown.enter)="takePhoto()" tabindex="0">
+          Take photo
         </span>
       </button>
     </mat-menu>
@@ -57,15 +60,4 @@
 
 <div class="space-medium"></div>
 
-<!-- Folder  ------------------------------------------------------------------------------- -->
-<app-folder-element></app-folder-element>
-
-<div class="space-small"></div>
-
-<!-- File ------------------------------------------------------------------------------- -->
-<app-file-element></app-file-element>
-<div class="space-small"></div>
-
-<!-- Temp -->
 <app-search-bar></app-search-bar>
-<app-take-photo></app-take-photo>

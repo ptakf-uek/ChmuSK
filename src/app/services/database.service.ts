@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, getDocs, setDoc } from '@angular/fire/firestore';
+import {
+  Firestore,
+  addDoc,
+  getDocs,
+  setDoc,
+  updateDoc,
+} from '@angular/fire/firestore';
 import { collection, doc } from '@firebase/firestore';
+import { File } from '../models/file';
 import { User } from '../models/user';
 import { generateId } from '../utils/utils';
 import { AuthService } from './auth.service';
@@ -48,20 +55,39 @@ export class DatabaseService {
     );
   }
 
-  async addFile(file: string) {
+  async addFile(file: any) {
     const userData: any = await this.getUserData();
-    const fileList: string[] = await this.getFileList();
+    const fileList: File[] = await this.getFileList();
 
     getDocs(collection(this.database, 'userFiles')).then((querySnapshot) => {
       querySnapshot.forEach((document) => {
         if (document.data()['userId'] === userData['id']) {
           fileList.push(file);
-          console.log(fileList);
 
           setDoc(doc(this.database, 'userFiles', document.id), {
             fileList: fileList,
             id: document.get('id'),
             userId: document.get('userId'),
+          });
+        }
+      });
+    });
+  }
+
+  async changeFilename(file: any) {
+    const userData: any = await this.getUserData();
+    const fileList: File[] = await this.getFileList();
+
+    getDocs(collection(this.database, 'userFiles')).then((querySnapshot) => {
+      querySnapshot.forEach((document) => {
+        if (document.data()['userId'] === userData['id']) {
+          const newFileList = fileList.filter(
+            (fileData) => fileData.id != file.id,
+          );
+          newFileList.push(file);
+
+          updateDoc(doc(this.database, 'userFiles', document.id), {
+            fileList: newFileList,
           });
         }
       });
