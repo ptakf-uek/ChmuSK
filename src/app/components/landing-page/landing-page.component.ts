@@ -20,6 +20,7 @@ export class LandingPageComponent implements OnInit {
       this.router.navigate(['/home']);
     }
   }
+
   goToLogIn() {
     this.router.navigate(['/login']);
   }

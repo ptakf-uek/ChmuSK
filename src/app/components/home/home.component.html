@@ -1,72 +1,70 @@
-<div class="container">
-  <div class="space-small"></div>
-  <!-- LOGO ------------------------------------------------------------------------------- -->
-  <div class="d-flex justify-content-center align-items-center gap-4">
-    <div>
-      <img src=".\assets\icons\icon-128x128.png" alt="Logo" />
-    </div>
-    <div class="text-start">
-      <p style="font-size: 3em">ChmuSK</p>
-      <p style="font-size: 1.5em">JUST ADD IT!</p>
-    </div>
+<div class="space-small"></div>
+<!-- LOGO ------------------------------------------------------------------------------- -->
+<div class="d-flex justify-content-center align-items-center gap-4">
+  <div>
+    <img src=".\assets\icons\icon-128x128.png" alt="Logo" />
   </div>
-
-  <div class="space-small"></div>
-
-  <!-- Folder name and plus button ------------------------------------------------------------------------------- -->
-  <div class="row align-items-center justify-content-end">
-    <div class="col-2"></div>
-    <div class="col-8 text-center">
-      <h1 class="display-6 text-shrink">
-        <strong id="folder-name">My ChmuSK</strong>
-      </h1>
-    </div>
-    <div class="col-2 text-center">
-      <button
-        mat-icon-button
-        [matMenuTriggerFor]="beforeMenu"
-        aria-label="Example icon-button with a menu"
-      >
-        <img
-          class="img-fluid three-dots-icon"
-          src=".\assets\icons\plus_icon.png"
-          alt="edit_icon"
-        />
-      </button>
-      <mat-menu #beforeMenu="matMenu" xPosition="before">
-        <button mat-menu-item>
-          <span
-            (click)="createNewFolder()"
-            (keydown.enter)="createNewFolder()"
-            tabindex="0"
-          >
-            Create folder
-          </span>
-        </button>
-        <button mat-menu-item>
-          <span
-            (click)="addNewFile()"
-            (keydown.enter)="addNewFile()"
-            tabindex="0"
-          >
-            Add file
-          </span>
-        </button>
-      </mat-menu>
-    </div>
+  <div class="text-start">
+    <p style="font-size: 3em">ChmuSK</p>
+    <p style="font-size: 1.5em">JUST ADD IT!</p>
   </div>
-
-  <div class="space-medium"></div>
-
-  <!-- Folder  ------------------------------------------------------------------------------- -->
-  <app-folder-element></app-folder-element>
-
-  <div class="space-small"></div>
-
-  <!-- File ------------------------------------------------------------------------------- -->
-  <app-file-element></app-file-element>
-  <div class="space-small"></div>
 </div>
+
+<div class="space-small"></div>
+
+<!-- Folder name and plus button ------------------------------------------------------------------------------- -->
+<div class="row align-items-center justify-content-end">
+  <div class="col-2"></div>
+  <div class="col-8 text-center">
+    <h1 class="display-6 text-shrink">
+      <strong id="folder-name">My ChmuSK</strong>
+    </h1>
+  </div>
+  <div class="col-2 text-center">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="beforeMenu"
+      aria-label="Example icon-button with a menu"
+    >
+      <img
+        class="img-fluid three-dots-icon"
+        src=".\assets\icons\plus_icon.png"
+        alt="edit_icon"
+      />
+    </button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item>
+        <span
+          (click)="addFolderInput()"
+          (keydown.enter)="addFolderInput()"
+          tabindex="0"
+        >
+          Create folder
+        </span>
+      </button>
+      <button mat-menu-item>
+        <span
+          (click)="addFileInput()"
+          (keydown.enter)="addFileInput()"
+          tabindex="0"
+        >
+          Add file
+        </span>
+      </button>
+    </mat-menu>
+  </div>
+</div>
+
+<div class="space-medium"></div>
+
+<!-- Folder  ------------------------------------------------------------------------------- -->
+<app-folder-element></app-folder-element>
+
+<div class="space-small"></div>
+
+<!-- File ------------------------------------------------------------------------------- -->
+<app-file-element></app-file-element>
+<div class="space-small"></div>
 
 <!-- Temp -->
 <app-search-bar></app-search-bar>

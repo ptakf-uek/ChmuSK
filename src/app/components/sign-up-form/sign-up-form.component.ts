@@ -3,6 +3,8 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
+import { DatabaseService } from '../../services/database.service';
+import { generateId } from '../../utils/utils';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -17,6 +19,7 @@ export class SignUpFormComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
+    private databaseService: DatabaseService,
   ) {}
 
   ngOnInit(): void {
@@ -27,7 +30,13 @@ export class SignUpFormComponent implements OnInit {
 
   signUpWithEmail(signUpForm: NgForm) {
     if (signUpForm.valid) {
+      this.user.displayName = this.user.email.split('@')[0];
+      this.user.id = generateId();
+
       this.authService.signUpWithEmail(this.user.email, this.user.password);
+      this.authService.userId = this.user.id;
+
+      this.databaseService.addUser(this.user);
     }
   }
 }

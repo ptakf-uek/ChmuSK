@@ -7,7 +7,6 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from '@angular/fire/auth';
-import { Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -15,11 +14,11 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   userData: any; // Logged in user data
+  userId: string = '';
   googleAuthProvider: GoogleAuthProvider = new GoogleAuthProvider();
 
   constructor(
     private auth: Auth,
-    private firestore: Firestore,
     private router: Router,
   ) {
     // Get authentication state
@@ -88,9 +87,7 @@ export class AuthService {
     signInWithPopup(this.auth, this.googleAuthProvider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(
-          result,
-        ) as any;
+        const credential = GoogleAuthProvider.credentialFromResult(result)!;
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
@@ -103,7 +100,7 @@ export class AuthService {
         // The email of the user's account used.
         const email = error.customData.email;
         // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error) as any;
+        const credential = GoogleAuthProvider.credentialFromError(error)!;
       });
   }
 }
