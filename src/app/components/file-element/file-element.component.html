@@ -3,18 +3,16 @@
     <img class="img-fluid" src=".\assets\icons\file_icon.png" alt="file_icon" />
   </div>
   <div class="col-8">
-    <a>
+    <a [href]="fileUrl" [download]="fileData.filename">
       <div class="row file-name">
         <div class="col-12">
           <p style="font-size: large">
             <strong>{{ fileData.filename }}</strong>
-            <span>
-              &lbbrk;{{ (this.fileSize / 1024).toFixed(2) }} KB&rbbrk;</span
-            >
+            <span> &lbbrk;{{ (fileSize / 1024).toFixed(2) }} KB&rbbrk;</span>
           </p>
         </div>
         <div class="col-12">
-          <p>Last modified: {{ this.lastModifiedDate }}</p>
+          <p>Last modified: {{ lastModifiedDate }}</p>
         </div>
       </div>
     </a>

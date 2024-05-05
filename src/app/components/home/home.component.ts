@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { DatabaseService } from '../../services/database.service';
 import { MobileFunctionalitiesService } from '../../services/mobile-functionalities.service';
+import { StorageService } from '../../services/storage.service';
+import { generateId } from '../../utils/utils';
 import { FileElementComponent } from '../file-element/file-element.component';
 import { FolderElementComponent } from '../folder-element/folder-element.component';
 
@@ -37,6 +39,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private databaseService: DatabaseService,
+    private storageService: StorageService,
     private mobileFunctionalitiesService: MobileFunctionalitiesService,
   ) {}
 
@@ -44,18 +47,6 @@ export class HomeComponent implements OnInit {
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/']);
     }
-
-    // TODO: remove this:
-    // this.addFile({
-    //   filename: 'pic.jpg',
-    //   folder: '',
-    //   id: 'g34h45hj34',
-    //   isPrivate: true,
-    //   tag: 'Personal',
-    //   type: 'image',
-    //   lastModified: '23-43-4234',
-    //   size: 34234,
-    // });
   }
 
   addFolderFromInput(): void {
@@ -71,15 +62,24 @@ export class HomeComponent implements OnInit {
     this.mobileFunctionalitiesService
       .takeCameraPhoto(this.currentFacingMode)
       .then((blob) => {
-        this.capturedImage = URL.createObjectURL(blob);
+        this.addFile(blob, {
+          filename: Date.now() + '.jpg',
+          folder: '',
+          id: generateId(),
+          isPrivate: true,
+          tag: 'Personal',
+          lastModified: new Date().toString(),
+          size: blob.size,
+        });
       })
       .catch((error) => {
         console.error('Error capturing image:', error);
       });
   }
 
-  addFile(file: any) {
+  addFile(blob: any, file: any) {
     // Add a file to the database
     this.databaseService.addFile(file);
+    this.storageService.addFile(blob);
   }
 }

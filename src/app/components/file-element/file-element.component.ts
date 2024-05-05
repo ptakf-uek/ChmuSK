@@ -20,6 +20,7 @@ export class FileElementComponent implements OnInit {
   deleteFileEvent = new EventEmitter<any>();
 
   fileSize: number = 0;
+  fileUrl: string = '';
   lastModifiedDate: string = '';
 
   constructor(private storageService: StorageService) {}
@@ -27,6 +28,7 @@ export class FileElementComponent implements OnInit {
   ngOnInit(): void {
     this.getFileSize();
     this.getFileLastModifiedDate();
+    this.getFileUrl();
   }
 
   changeFilename(): void {
@@ -53,5 +55,12 @@ export class FileElementComponent implements OnInit {
         this.lastModifiedDate = lastModifiedDate;
         this.fileData.lastModified = lastModifiedDate;
       });
+  }
+
+  getFileUrl() {
+    // Get file access URL from storage
+    this.storageService.getFileUrl(this.fileData).then((fileUrl) => {
+      this.fileUrl = fileUrl;
+    });
   }
 }
