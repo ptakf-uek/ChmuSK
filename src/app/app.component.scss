@@ -1,0 +1,32 @@
+.logo-row {
+    background-color: white;
+}
+
+@media (max-width: 780px) {
+    .text-shrink {
+        font-size: 1.5rem; 
+    }
+}
+@media (max-width: 576px) {
+    .text-shrink {
+        font-size: 1rem; 
+    }
+}
+@media (max-width: 400px) {
+    .text-shrink {
+        font-size: 0.8rem; 
+    }
+}
+
+.space-small {
+    height: 15px;
+}
+
+.space-medium {
+    height: 40px;
+}
+
+.three-dots-icon {
+    max-width: 80%;
+    max-height: 80%;
+}
