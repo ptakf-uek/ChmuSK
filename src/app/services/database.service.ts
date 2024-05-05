@@ -94,6 +94,25 @@ export class DatabaseService {
     });
   }
 
+  async deleteFile(file: any) {
+    const userData: any = await this.getUserData();
+    const fileList: File[] = await this.getFileList();
+
+    getDocs(collection(this.database, 'userFiles')).then((querySnapshot) => {
+      querySnapshot.forEach((document) => {
+        if (document.data()['userId'] === userData['id']) {
+          const newFileList = fileList.filter(
+            (fileData) => fileData.id != file.id,
+          );
+
+          updateDoc(doc(this.database, 'userFiles', document.id), {
+            fileList: newFileList,
+          });
+        }
+      });
+    });
+  }
+
   async getFileList() {
     const userData: any = await this.getUserData();
 

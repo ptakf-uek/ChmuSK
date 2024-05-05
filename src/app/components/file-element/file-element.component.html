@@ -32,23 +32,19 @@
       />
     </button>
     <mat-menu #beforeMenu="matMenu" xPosition="before">
-      <button mat-menu-item>
-        <span
-          (click)="changeFilename()"
-          (keydown.enter)="changeFilename()"
-          tabindex="0"
-        >
-          Change name
-        </span>
+      <button
+        mat-menu-item
+        (click)="changeFilename()"
+        (keydown.enter)="changeFilename()"
+      >
+        <span tabindex="1"> Change name </span>
       </button>
-      <button mat-menu-item>
-        <span
-          (click)="deleteFile()"
-          (keydown.enter)="deleteFile()"
-          tabindex="0"
-        >
-          Delete
-        </span>
+      <button
+        mat-menu-item
+        (click)="deleteFile()"
+        (keydown.enter)="deleteFile()"
+      >
+        <span tabindex="0"> Delete </span>
       </button>
     </mat-menu>
   </div>

@@ -15,12 +15,14 @@ export class FileElementComponent {
 
   @Output()
   changeFilenameEvent = new EventEmitter<any>();
+  @Output()
+  deleteFileEvent = new EventEmitter<any>();
 
   changeFilename(): void {
     this.changeFilenameEvent.emit(this.fileData);
   }
 
   deleteFile(): void {
-    console.log('Thing deleted!');
+    this.deleteFileEvent.emit(this.fileData);
   }
 }

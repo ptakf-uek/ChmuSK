@@ -38,8 +38,14 @@ export class SearchBarComponent implements OnInit {
   }
 
   changeFilename(fileData: any) {
-    this.databaseService.changeFilename(fileData);
+    this.databaseService.changeFilename(fileData).then(() => {
+      this.getFileList();
+    });
+  }
 
-    this.getFileList();
+  deleteFile(fileData: any) {
+    this.databaseService.deleteFile(fileData).then(() => {
+      this.getFileList();
+    });
   }
 }
