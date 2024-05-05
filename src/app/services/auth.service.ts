@@ -58,6 +58,7 @@ export class AuthService {
   }
 
   signUpWithEmail(email: string, password: string) {
+    // Create a new account with email
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((result) => {
         const user = result.user;
@@ -71,6 +72,7 @@ export class AuthService {
   }
 
   logInWithEmail(email: string, password: string) {
+    // Log in to an existing account with email
     signInWithEmailAndPassword(this.auth, email, password)
       .then((result: any) => {
         const user = result.user;
@@ -84,6 +86,7 @@ export class AuthService {
   }
 
   logInWithGoogle() {
+    // Log in with a Google account
     signInWithPopup(this.auth, this.googleAuthProvider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.

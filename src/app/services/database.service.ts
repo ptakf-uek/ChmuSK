@@ -7,7 +7,6 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 import { collection, doc } from '@firebase/firestore';
-import { File } from '../models/file';
 import { User } from '../models/user';
 import { generateId } from '../utils/utils';
 import { AuthService } from './auth.service';
@@ -22,6 +21,7 @@ export class DatabaseService {
   ) {}
 
   addUser(user: User) {
+    // Add user to the userData collection in the database
     addDoc(collection(this.database, 'userData'), {
       displayName: user.displayName,
       driveSize: 1,
@@ -37,6 +37,7 @@ export class DatabaseService {
   }
 
   async getUserData() {
+    // Get user from the userData collection in the database
     return getDocs(collection(this.database, 'userData')).then(
       (querySnapshot) => {
         let userData: object = {};
@@ -56,8 +57,9 @@ export class DatabaseService {
   }
 
   async addFile(file: any) {
+    // Add to a file to the userFiles collection in the database
     const userData: any = await this.getUserData();
-    const fileList: File[] = await this.getFileList();
+    const fileList: any[] = await this.getFileList();
 
     getDocs(collection(this.database, 'userFiles')).then((querySnapshot) => {
       querySnapshot.forEach((document) => {
@@ -75,8 +77,9 @@ export class DatabaseService {
   }
 
   async changeFilename(file: any) {
+    // Change the name of a file in the userFiles collection in the database
     const userData: any = await this.getUserData();
-    const fileList: File[] = await this.getFileList();
+    const fileList: any[] = await this.getFileList();
 
     getDocs(collection(this.database, 'userFiles')).then((querySnapshot) => {
       querySnapshot.forEach((document) => {
@@ -95,8 +98,9 @@ export class DatabaseService {
   }
 
   async deleteFile(file: any) {
+    // Delete a file from the userFiles collection in the database
     const userData: any = await this.getUserData();
-    const fileList: File[] = await this.getFileList();
+    const fileList: any[] = await this.getFileList();
 
     getDocs(collection(this.database, 'userFiles')).then((querySnapshot) => {
       querySnapshot.forEach((document) => {
@@ -114,6 +118,7 @@ export class DatabaseService {
   }
 
   async getFileList() {
+    // Get a list of files from the userFiles collection in the database
     const userData: any = await this.getUserData();
 
     return getDocs(collection(this.database, 'userFiles')).then(

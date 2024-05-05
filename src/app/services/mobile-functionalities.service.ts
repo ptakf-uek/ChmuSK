@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 export class MobileFunctionalitiesService {
   constructor() {}
 
-  // Function to vibrate the phone
   vibratePhone(duration: number) {
+    // Vibrate the phone
     if ('vibrate' in navigator) {
       navigator.vibrate(duration);
     } else {
@@ -15,8 +15,8 @@ export class MobileFunctionalitiesService {
     }
   }
 
-  // Function to get current geolocation
   getCurrentLocation(): Promise<GeolocationCoordinates> {
+    // Get current geolocation
     return new Promise((resolve, reject) => {
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(
@@ -33,8 +33,8 @@ export class MobileFunctionalitiesService {
     });
   }
 
-  // Function to take a photo with the front camera
   takeCameraPhoto(facingMode: 'user' | 'environment'): Promise<Blob> {
+    // Take a photo with the front camera
     return new Promise((resolve, reject) => {
       if (
         'mediaDevices' in navigator &&

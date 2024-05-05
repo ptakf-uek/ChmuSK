@@ -26,12 +26,14 @@ export class LogInFormComponent implements OnInit {
   }
 
   logInWithEmail(signUpForm: NgForm) {
+    // Log in to an existing account with email
     if (signUpForm.valid) {
       this.authService.logInWithEmail(this.user.email, this.user.password);
     }
   }
 
   logInWithGoogle() {
+    // Log in with a Google account
     this.authService.logInWithGoogle();
   }
 }

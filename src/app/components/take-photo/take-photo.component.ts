@@ -1,6 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MobileFunctionalitiesService } from '../../services/mobile-functionalities.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-take-photo',
@@ -18,6 +18,7 @@ export class TakePhotoComponent {
   ) {}
 
   takePhoto() {
+    // Take a photo using the device's camera
     this.mobileFunctionalitiesService
       .takeCameraPhoto(this.currentFacingMode)
       .then((blob) => {
@@ -29,6 +30,7 @@ export class TakePhotoComponent {
   }
 
   toggleCamera() {
+    // Toggle between front and rear cameras
     this.currentFacingMode =
       this.currentFacingMode === 'user' ? 'environment' : 'user';
   }

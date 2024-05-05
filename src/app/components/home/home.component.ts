@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatIcon } from '@angular/material/icon';
-import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { FileListComponent } from '../file-list/file-list.component';
 import { TakePhotoComponent } from '../take-photo/take-photo.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
-import { File } from '../../models/file';
 import { AuthService } from '../../services/auth.service';
 import { DatabaseService } from '../../services/database.service';
 import { MobileFunctionalitiesService } from '../../services/mobile-functionalities.service';
@@ -20,7 +19,7 @@ import { FolderElementComponent } from '../folder-element/folder-element.compone
   imports: [
     TakePhotoComponent,
     MatIcon,
-    SearchBarComponent,
+    FileListComponent,
     FileElementComponent,
     FolderElementComponent,
     MatButtonModule,
@@ -33,6 +32,7 @@ import { FolderElementComponent } from '../folder-element/folder-element.compone
 export class HomeComponent implements OnInit {
   capturedImage: any;
   currentFacingMode: 'user' | 'environment' = 'user'; // Default to front camera
+
   fileList: any[] = [
     { filename: 'book1.pdf', id: 1, lastModified: '24-13-2033', size: 43243 },
     { filename: 'book2.pdf', id: 2, lastModified: '01-01-2045', size: 123 },
@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit {
   }
 
   takePhoto() {
+    // Take a photo
     this.mobileFunctionalitiesService
       .takeCameraPhoto(this.currentFacingMode)
       .then((blob) => {
@@ -83,6 +84,7 @@ export class HomeComponent implements OnInit {
   }
 
   addFile(file: any) {
+    // Add a file to the database
     this.databaseService.addFile(file);
   }
 }

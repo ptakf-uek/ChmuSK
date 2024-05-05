@@ -3,12 +3,12 @@ import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { MatToolbar } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { FileListComponent } from './components/file-list/file-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatToolbar, SearchBarComponent],
+  imports: [RouterOutlet, MatToolbar, FileListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

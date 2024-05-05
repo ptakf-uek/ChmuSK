@@ -29,6 +29,7 @@ export class SignUpFormComponent implements OnInit {
   }
 
   signUpWithEmail(signUpForm: NgForm) {
+    // Create a new account with email
     if (signUpForm.valid) {
       this.user.displayName = this.user.email.split('@')[0];
       this.user.id = generateId();
