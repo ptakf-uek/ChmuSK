@@ -22,15 +22,37 @@
       </h1>
     </div>
     <div class="col-2 text-center">
-      <img
-        class="img-fluid"
-        src=".\assets\icons\plus_icon.png"
-        alt="Plus Icon"
-        (click)="openCreationSheet()"
-        (keydown.enter)="openCreationSheet()"
-        (keydown.space)="openCreationSheet()"
-        tabindex="0"
-      />
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="beforeMenu"
+        aria-label="Example icon-button with a menu"
+      >
+        <img
+          class="img-fluid three-dots-icon"
+          src=".\assets\icons\plus_icon.png"
+          alt="edit_icon"
+        />
+      </button>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item>
+          <span
+            (click)="createNewFolder()"
+            (keydown.enter)="createNewFolder()"
+            tabindex="0"
+          >
+            Create folder
+          </span>
+        </button>
+        <button mat-menu-item>
+          <span
+            (click)="addNewFile()"
+            (keydown.enter)="addNewFile()"
+            tabindex="0"
+          >
+            Add file
+          </span>
+        </button>
+      </mat-menu>
     </div>
   </div>
 

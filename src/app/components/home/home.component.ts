@@ -7,9 +7,9 @@ import {
 } from '@angular/material/bottom-sheet';
 
 import { MatButtonModule } from '@angular/material/button';
-import { CreationSheetComponent } from '../creation-sheet/creation-sheet.component';
 import { FileElementComponent } from '../file-element/file-element.component';
 import { FolderElementComponent } from '../folder-element/folder-element.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +21,7 @@ import { FolderElementComponent } from '../folder-element/folder-element.compone
     FolderElementComponent,
     MatButtonModule,
     MatBottomSheetModule,
+    MatMenuModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -28,7 +29,11 @@ import { FolderElementComponent } from '../folder-element/folder-element.compone
 export class HomeComponent {
   constructor(private _bottomSheet: MatBottomSheet) {}
 
-  openCreationSheet(): void {
-    this._bottomSheet.open(CreationSheetComponent);
+  createNewFolder(): void {
+    console.log('Folder created!');
+  }
+
+  addNewFile(): void {
+    console.log('File added!');
   }
 }
